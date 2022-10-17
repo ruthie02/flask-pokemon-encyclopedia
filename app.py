@@ -1,20 +1,12 @@
 from flask import Flask
-from helpers import get_pokemon_by_name
+from helpers import get_pokemon_by_name, get_random_pokemon_list
 
 app = Flask(__name__)
-
-pokemon_data = {
-    "bulbasaur": "dinosaur",
-    "charmander": "reptile",
-    "pikachu": "rodent",
-    "eeve": "fox",
-    "diglett": "mole"
-}
 
 
 @app.get("/")
 def pokemon_list():
-    return "Bulbasaur, Charmander, pikachu, eevee, diglet"
+    return ", ".join([pokemon['name'] for pokemon in get_random_pokemon_list()]).capitalize()
 
 
 @app.get("/<pokemon_name>")
