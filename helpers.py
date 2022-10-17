@@ -2,6 +2,8 @@ import requests
 import random
 
 FIRST_GENERATION_POKEMON_IDS = range(1,52)
+
+
 def get_pokemon_by_name(pokemon_name):
     response = requests.get(f"https://pokeapi.co/api/v2/pokemon/{pokemon_name}")
     pokemon = response.json()
